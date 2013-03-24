@@ -168,6 +168,11 @@
 
 - (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
 {
+    
+    NSHost *host = [NSHost currentHost];
+    NSLog(@"hostName %@",[host localizedName]);
+    
+    
     NSDictionary* deviceProperties = [self deviceProperties];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceProperties];
     NSLog(@"command.callBackId = %@",command.callbackId);
