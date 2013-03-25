@@ -39,7 +39,10 @@
 
 @implementation ___FILEBASENAME___
 
-- (void)init:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+
+//  CDVInvokedUrlCommand* command = [[CDVInvokedUrlCommand alloc] initWithArguments:arguments callbackId:callbackId className:service methodName:action];
+
+- (void)init:(CDVInvokedUrlCommand*)command
 {
 	NSLog(@"init called from %@!", [self class]);
 
@@ -50,11 +53,19 @@
 	}
 
     
+    for (int i=0; i<[command.arguments count];i++) {
+       
+        
+        NSLog(@"[command.arguments objectAtIndex:%i] = %@",i,[command.arguments objectAtIndex:i]);
+        
+    }
+    
     NSHost *host = [NSHost currentHost];
     NSLog(@"hostName %@",[host localizedName]);
 	//NSString	*callbackId		= [arguments pop];
-	NSString	*objectAtIndex0 = [arguments objectAtIndex:0];
-    
+	NSString	*objectAtIndex0 = [command.arguments objectAtIndex:0];
+    NSLog(@"command description %@",objectAtIndex0);
+ 
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	CDVPluginResult		*result;
     
@@ -98,11 +109,11 @@
 	NSString	*objectAtIndex0 = [arguments objectAtIndex:0];
     
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	CDVPluginResult		*result;
+	//CDVPluginResult		*result;
     
 		NSString *jsString = k___FILEBASENAME___FUNCTION;
 		[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-		result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___FUNCTION was evaluated by webview!"];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
     [self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
 
 }
@@ -110,18 +121,19 @@
 - (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
 {
     
+   	NSLog(@"getDeviceInfo called from %@!", [self class]);
+ 
     NSHost *host = [NSHost currentHost];
     NSLog(@"hostName %@",[host localizedName]);
     
     
     NSDictionary* deviceProperties = [self deviceProperties];
-    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[deviceProperties objectForKey:@"model"]];
+    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
 
     //CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
 
-    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
     
-    NSLog(@"command.callBackId = %@",command.callbackId);
+    NSLog(@"command.callBackId = %@\n",command.callbackId);
     //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     
     
