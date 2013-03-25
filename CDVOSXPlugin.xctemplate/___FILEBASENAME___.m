@@ -77,6 +77,14 @@
 {
 	NSLog(@"nativeFunction called from %@!", [self class]);
 
+    for (int i = 0; i < [command.arguments count]; i++) {
+		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
+	}
+    
+    NSLog(@"command.callBackId = %@", command.callbackId);
+	NSLog(@"[command class] =  %@", [command class]);
+	NSLog(@"[command methodName] = %@", [command methodName]);
+
 	if (self.hasPendingOperation) {
 		NSLog(@"%@.hasPendingOperation = YES", [self class]);
 	} else {
@@ -95,19 +103,19 @@
 - (void)getDeviceInfo:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"getDeviceInfo called from %@!", [self class]);
-	NSLog(@"command.callBackId = %@\n", command.callbackId);
 
-	for (int i = 0; i < [command.arguments count]; i++) {
+    for (int i = 0; i < [command.arguments count]; i++) {
 		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
 	}
+    
+    NSLog(@"command.callBackId = %@", command.callbackId);
+	NSLog(@"[command class] =  %@", [command class]);
+	NSLog(@"[command methodName] = %@", [command methodName]);
 
 	NSHost *host = [NSHost currentHost];
 	NSLog(@"hostName %@", [host localizedName]);
 
 	NSDictionary *deviceProperties = [self deviceProperties];
-	//    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
-
-	// CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
 
 	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 
