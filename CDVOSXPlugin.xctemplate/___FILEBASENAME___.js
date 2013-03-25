@@ -28,7 +28,7 @@
  
  var cordovaRef = window.PhoneGap || window.Cordova || window.cordova; // old to new fallbacks
  
- function ___FILEBASENAME___(){}
+ function ___FILEBASENAME___() {}
  
  
  ___FILEBASENAME___.prototype.getDeviceInfo = function(success, fail, object) {
@@ -55,19 +55,22 @@
  
  }
  
- ___FILEBASENAME___.prototype.nativePluginResultHandler = function(object) { console.log(object+' prototyped callback'); }
+ ___FILEBASENAME___.prototype.nativePluginResultHandler = function(object) {
+ console.log(object + ' prototyped callback');
+ }
  
  
- ___FILEBASENAME___.prototype.nativePluginErrorHandler = function(object) { console.log(object+' prototyped callback'); }
+ ___FILEBASENAME___.prototype.nativePluginErrorHandler = function(object) {
+ console.log(object + ' prototyped callback');
+ }
  
  
  
- ___FILEBASENAME___.install = function()
- {
- if ( !window.plugins ) {
+ ___FILEBASENAME___.install = function() {
+ if (!window.plugins) {
  window.plugins = {};
  }
- if ( !window.plugins.___FILEBASENAME___ ) {
+ if (!window.plugins.___FILEBASENAME___) {
  window.plugins.___FILEBASENAME___ = new ___FILEBASENAME___();
  }
  }

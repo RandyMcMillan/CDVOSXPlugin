@@ -31,8 +31,8 @@
 @interface ___FILEBASENAME___ : CDVPlugin {}
 
 - (void)init:(CDVInvokedUrlCommand *)command;
-- (void)nativeFunctionWithAlert:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
-- (void)nativeFunction:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void)nativeFunctionWithAlert:(CDVInvokedUrlCommand *)command;
+- (void)nativeFunction:(CDVInvokedUrlCommand *)command;
 
 + (NSString *)cordovaVersion;
 

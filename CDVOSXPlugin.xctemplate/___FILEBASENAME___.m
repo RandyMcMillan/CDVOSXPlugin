@@ -68,7 +68,7 @@
 	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___INIT was evaluated by webview!"];
 }
 
-- (void)nativeFunctionWithAlert:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+- (void)nativeFunctionWithAlert:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"nativeFunctionWithAlert called from %@!", [self class]);
 
@@ -78,7 +78,7 @@
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
 
-	NSString *objectAtIndex0 = [arguments objectAtIndex:0];
+	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
 
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	CDVPluginResult		*result;
@@ -86,10 +86,10 @@
 	NSString *jsString = k___FILEBASENAME___ALERT;
 	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
 	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___ALERT was evaluated by webview and created alert!"];
-	[self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
+	[self.commandDelegate sendPluginResult:result callbackId:[command.arguments objectAtIndex:0]];
 }
 
-- (void)nativeFunction:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
+- (void)nativeFunction:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"nativeFunction called from %@!", [self class]);
 
@@ -99,7 +99,7 @@
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
 
-	NSString *objectAtIndex0 = [arguments objectAtIndex:0];
+	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
 
 	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	// CDVPluginResult		*result;
@@ -107,7 +107,7 @@
 	NSString *jsString = k___FILEBASENAME___FUNCTION;
 	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
 	CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
-	[self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
+	[self.commandDelegate sendPluginResult:result callbackId:[command.arguments objectAtIndex:0]];
 }
 
 - (void)getDeviceInfo:(CDVInvokedUrlCommand *)command
