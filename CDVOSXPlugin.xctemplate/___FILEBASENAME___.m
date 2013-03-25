@@ -117,20 +117,20 @@
     NSDictionary* deviceProperties = [self deviceProperties];
     //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[deviceProperties objectForKey:@"model"]];
 
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
+    //CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
 
     //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
     
     NSLog(@"command.callBackId = %@",command.callbackId);
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     
     
     CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	CDVPluginResult		*result;
+	//CDVPluginResult		*result;
     
     NSString *jsString = k___FILEBASENAME___FUNCTION;
     [mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___FUNCTION was evaluated by webview!"];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
     
