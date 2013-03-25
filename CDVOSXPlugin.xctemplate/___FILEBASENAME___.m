@@ -107,6 +107,38 @@
 
 }
 
+- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
+{
+    
+    NSHost *host = [NSHost currentHost];
+    NSLog(@"hostName %@",[host localizedName]);
+    
+    
+    NSDictionary* deviceProperties = [self deviceProperties];
+    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[deviceProperties objectForKey:@"model"]];
+
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
+
+    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
+    
+    NSLog(@"command.callBackId = %@",command.callbackId);
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (NSDictionary*)deviceProperties
+{
+    NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
+    
+    [devProps setObject:[self modelVersion] forKey:@"model"];
+    [devProps setObject:[self platform] forKey:@"platform"];
+    [devProps setObject:[self systemVersion] forKey:@"version"];
+    [devProps setObject:[self uniqueAppInstanceIdentifier] forKey:@"uuid"];
+    [devProps setObject:[self model] forKey:@"name"];
+    [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
+    
+    NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
+    return devReturn;
+}
 
 - (NSString*)modelVersion
 {
@@ -166,42 +198,11 @@
     return [[NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST] objectForKey:@"ProductVersion"];
 }
 
-- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
-{
-    
-    NSHost *host = [NSHost currentHost];
-    NSLog(@"hostName %@",[host localizedName]);
-    
-    
-    NSDictionary* deviceProperties = [self deviceProperties];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:deviceProperties];
-    NSLog(@"command.callBackId = %@",command.callbackId);
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
-- (NSDictionary*)deviceProperties
-{
-    NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
-    
-    [devProps setObject:[self modelVersion] forKey:@"model"];
-    [devProps setObject:[self platform] forKey:@"platform"];
-    [devProps setObject:[self systemVersion] forKey:@"version"];
-    [devProps setObject:[self uniqueAppInstanceIdentifier] forKey:@"uuid"];
-    [devProps setObject:[self model] forKey:@"name"];
-    [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-    
-    NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
-    return devReturn;
-}
 
 + (NSString*)cordovaVersion
 {
     return CDV_VERSION;
 }
-
-
-
-
 
 - (void)handleOpenURL:(NSNotification *)notification
 {
