@@ -123,6 +123,17 @@
     
     NSLog(@"command.callBackId = %@",command.callbackId);
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
+    
+    CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
+	CDVPluginResult		*result;
+    
+    NSString *jsString = k___FILEBASENAME___FUNCTION;
+    [mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
+    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___FUNCTION was evaluated by webview!"];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+
+    
 }
 
 - (NSDictionary*)deviceProperties
