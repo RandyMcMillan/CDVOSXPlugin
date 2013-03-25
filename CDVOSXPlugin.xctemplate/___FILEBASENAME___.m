@@ -24,11 +24,10 @@
  *     Copyright ___ORGANIZATIONNAME___ ___YEAR___. All rights reserved.
  */
 
-
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-#define SYSTEM_VERSION_PLIST    @"/System/Library/CoreServices/SystemVersion.plist"
+#define SYSTEM_VERSION_PLIST @"/System/Library/CoreServices/SystemVersion.plist"
 
 #import <Cordova/CDVAvailability.h>
 #import <Cordova/CDVViewController.h>
@@ -39,10 +38,9 @@
 
 @implementation ___FILEBASENAME___
 
-
 //  CDVInvokedUrlCommand* command = [[CDVInvokedUrlCommand alloc] initWithArguments:arguments callbackId:callbackId className:service methodName:action];
 
-- (void)init:(CDVInvokedUrlCommand*)command
+- (void)init:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"init called from %@!", [self class]);
 
@@ -52,189 +50,170 @@
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
 
-    
-    for (int i=0; i<[command.arguments count];i++) {
-       
-        
-        NSLog(@"[command.arguments objectAtIndex:%i] = %@",i,[command.arguments objectAtIndex:i]);
-        
-    }
-    
-    NSHost *host = [NSHost currentHost];
-    NSLog(@"hostName %@",[host localizedName]);
-	//NSString	*callbackId		= [arguments pop];
-	NSString	*objectAtIndex0 = [command.arguments objectAtIndex:0];
-    NSLog(@"command description %@",objectAtIndex0);
- 
+	for (int i = 0; i < [command.arguments count]; i++) {
+		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
+	}
+
+	NSHost *host = [NSHost currentHost];
+	NSLog(@"hostName %@", [host localizedName]);
+	// NSString	*callbackId		= [arguments pop];
+	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
+	NSLog(@"command description %@", objectAtIndex0);
+
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	CDVPluginResult		*result;
-    
-		NSString *jsString = k___FILEBASENAME___INIT;
-		[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-		result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___INIT was evaluated by webview!"];
-    
+
+	NSString *jsString = k___FILEBASENAME___INIT;
+	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
+	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___INIT was evaluated by webview!"];
 }
 
 - (void)nativeFunctionWithAlert:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
 {
 	NSLog(@"nativeFunctionWithAlert called from %@!", [self class]);
 
-    if (self.hasPendingOperation) {
+	if (self.hasPendingOperation) {
 		NSLog(@"%@.hasPendingOperation = YES", [self class]);
 	} else {
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
-    
-	NSString	*objectAtIndex0 = [arguments objectAtIndex:0];
+
+	NSString *objectAtIndex0 = [arguments objectAtIndex:0];
 
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	CDVPluginResult		*result;
 
-		NSString *jsString = k___FILEBASENAME___ALERT;
-		[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-		result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___ALERT was evaluated by webview and created alert!"];
-    [self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
-
+	NSString *jsString = k___FILEBASENAME___ALERT;
+	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
+	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___ALERT was evaluated by webview and created alert!"];
+	[self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
 }
+
 - (void)nativeFunction:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options
 {
 	NSLog(@"nativeFunction called from %@!", [self class]);
-    
-    if (self.hasPendingOperation) {
+
+	if (self.hasPendingOperation) {
 		NSLog(@"%@.hasPendingOperation = YES", [self class]);
 	} else {
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
-    
-	NSString	*objectAtIndex0 = [arguments objectAtIndex:0];
-    
-	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	//CDVPluginResult		*result;
-    
-		NSString *jsString = k___FILEBASENAME___FUNCTION;
-		[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
-    [self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
 
+	NSString *objectAtIndex0 = [arguments objectAtIndex:0];
+
+	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
+	// CDVPluginResult		*result;
+
+	NSString *jsString = k___FILEBASENAME___FUNCTION;
+	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
+	CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
+	[self.commandDelegate sendPluginResult:result callbackId:[arguments objectAtIndex:0]];
 }
 
-- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command
+- (void)getDeviceInfo:(CDVInvokedUrlCommand *)command
 {
-    
-   	NSLog(@"getDeviceInfo called from %@!", [self class]);
+	NSLog(@"getDeviceInfo called from %@!", [self class]);
 
-    
-    for (int i=0; i<[command.arguments count];i++) {
-        
-        
-        NSLog(@"[command.arguments objectAtIndex:%i] = %@",i,[command.arguments objectAtIndex:i]);
-        
-    }
+	for (int i = 0; i < [command.arguments count]; i++) {
+		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
+	}
 
-    
-    
-    NSHost *host = [NSHost currentHost];
-    NSLog(@"hostName %@",[host localizedName]);
-    
-    
-    NSDictionary* deviceProperties = [self deviceProperties];
-    //    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
+	NSHost *host = [NSHost currentHost];
+	NSLog(@"hostName %@", [host localizedName]);
 
-    //CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
+	NSDictionary *deviceProperties = [self deviceProperties];
+	//    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:deviceProperties];
 
-    
-    NSLog(@"command.callBackId = %@\n",command.callbackId);
-    //[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
-    
-    CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	//CDVPluginResult		*result;
-    
-    NSString *jsString = k___FILEBASENAME___FUNCTION;
-    [mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+	// CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
 
-    
+	NSLog(@"command.callBackId = %@\n", command.callbackId);
+	// [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
+	// CDVPluginResult		*result;
+
+	NSString *jsString = k___FILEBASENAME___FUNCTION;
+	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
+	CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
+	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
-- (NSDictionary*)deviceProperties
+- (NSDictionary *)deviceProperties
 {
-    NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
-    
-    [devProps setObject:[self modelVersion] forKey:@"model"];
-    [devProps setObject:[self platform] forKey:@"platform"];
-    [devProps setObject:[self systemVersion] forKey:@"version"];
-    [devProps setObject:[self uniqueAppInstanceIdentifier] forKey:@"uuid"];
-    [devProps setObject:[self model] forKey:@"name"];
-    [devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
-    
-    NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
-    return devReturn;
+	NSMutableDictionary *devProps = [NSMutableDictionary dictionaryWithCapacity:4];
+
+	[devProps setObject:[self modelVersion] forKey:@"model"];
+	[devProps setObject:[self platform] forKey:@"platform"];
+	[devProps setObject:[self systemVersion] forKey:@"version"];
+	[devProps setObject:[self uniqueAppInstanceIdentifier] forKey:@"uuid"];
+	[devProps setObject:[self model] forKey:@"name"];
+	[devProps setObject:[[self class] cordovaVersion] forKey:@"cordova"];
+
+	NSDictionary *devReturn = [NSDictionary dictionaryWithDictionary:devProps];
+	return devReturn;
 }
 
-- (NSString*)modelVersion
+- (NSString *)modelVersion
 {
-    size_t size;
-    
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-    char* machine = malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
-    NSString* modelVersion = [NSString stringWithUTF8String:machine];
-    free(machine);
-    
-    return modelVersion;
+	size_t size;
+
+	sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+	char *machine = malloc(size);
+	sysctlbyname("hw.machine", machine, &size, NULL, 0);
+	NSString *modelVersion = [NSString stringWithUTF8String:machine];
+	free(machine);
+
+	return modelVersion;
 }
 
-- (NSString*)model
+- (NSString *)model
 {
-    size_t size;
-    
-    sysctlbyname("hw.model", NULL, &size, NULL, 0);
-    char* model = malloc(size);
-    sysctlbyname("hw.model", model, &size, NULL, 0);
-    NSString* name = [NSString stringWithUTF8String:model];
-    free(model);
-    
-    return name;
+	size_t size;
+
+	sysctlbyname("hw.model", NULL, &size, NULL, 0);
+	char *model = malloc(size);
+	sysctlbyname("hw.model", model, &size, NULL, 0);
+	NSString *name = [NSString stringWithUTF8String:model];
+	free(model);
+
+	return name;
 }
 
-- (NSString*)uniqueAppInstanceIdentifier
+- (NSString *)uniqueAppInstanceIdentifier
 {
-    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-    static NSString* UUID_KEY = @"CDVUUID";
-    
-    NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
-    
-    if (app_uuid == nil) {
-        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
-        
-        app_uuid = [NSString stringWithString:(__bridge NSString*)uuidString];
-        [userDefaults setObject:app_uuid forKey:UUID_KEY];
-        [userDefaults synchronize];
-        
-        CFRelease(uuidString);
-        CFRelease(uuidRef);
-    }
-    
-    return app_uuid;
+	NSUserDefaults	*userDefaults	= [NSUserDefaults standardUserDefaults];
+	static NSString *UUID_KEY		= @"CDVUUID";
+
+	NSString *app_uuid = [userDefaults stringForKey:UUID_KEY];
+
+	if (app_uuid == nil) {
+		CFUUIDRef	uuidRef		= CFUUIDCreate(kCFAllocatorDefault);
+		CFStringRef uuidString	= CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+
+		app_uuid = [NSString stringWithString:(__bridge NSString *)uuidString];
+		[userDefaults setObject:app_uuid forKey:UUID_KEY];
+		[userDefaults synchronize];
+
+		CFRelease(uuidString);
+		CFRelease(uuidRef);
+	}
+
+	return app_uuid;
 }
 
-- (NSString*) platform
+- (NSString *)platform
 {
-    return [[NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST] objectForKey:@"ProductName"];
+	return [[NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST] objectForKey:@"ProductName"];
 }
 
-- (NSString*)systemVersion
+- (NSString *)systemVersion
 {
-    return [[NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST] objectForKey:@"ProductVersion"];
+	return [[NSDictionary dictionaryWithContentsOfFile:SYSTEM_VERSION_PLIST] objectForKey:@"ProductVersion"];
 }
 
-
-+ (NSString*)cordovaVersion
++ (NSString *)cordovaVersion
 {
-    return CDV_VERSION;
+	return CDV_VERSION;
 }
 
 - (void)handleOpenURL:(NSNotification *)notification

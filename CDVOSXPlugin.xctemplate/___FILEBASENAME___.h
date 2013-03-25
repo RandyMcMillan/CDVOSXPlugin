@@ -30,13 +30,12 @@
 
 @interface ___FILEBASENAME___ : CDVPlugin {}
 
-- (void)init:(CDVInvokedUrlCommand*)command;
+- (void)init:(CDVInvokedUrlCommand *)command;
 - (void)nativeFunctionWithAlert:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void)nativeFunction:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 
-+ (NSString*)cordovaVersion;
++ (NSString *)cordovaVersion;
 
-- (void)getDeviceInfo:(CDVInvokedUrlCommand*)command;
-
+- (void)getDeviceInfo:(CDVInvokedUrlCommand *)command;
 
 @end
