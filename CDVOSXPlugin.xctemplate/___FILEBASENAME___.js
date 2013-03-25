@@ -43,11 +43,6 @@
  
  }
  
- ___FILEBASENAME___.prototype.callNativeFunctionWithAlert = function(success, fail, object) {
- 
- cordovaRef.exec(success, fail, "___FILEBASENAME___", "nativeFunctionWithAlert", [object]);
- 
- }
  
  ___FILEBASENAME___.prototype.callNativeFunction = function(success, fail, object) {
  

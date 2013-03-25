@@ -39,27 +39,34 @@
                 'Connection type: ' + states[networkState] + '<\/br>';
             }
             
-            function getDeviceInfo (object){
-                
-                window.plugins.___FILEBASENAME___.getDeviceInfo(nativePluginResultHandler,nativePluginErrorHandler,object);
-                
-            }
-            
-            
             function init (object){
                 
                 window.plugins.___FILEBASENAME___.init(nativePluginResultHandler,nativePluginErrorHandler,object);
                 
             }
             
-            function buttonOne (object){
-                //prototyped result and error handlers in ___FILEBASENAME___.js
-                window.plugins.___FILEBASENAME___.callNativeFunctionWithAlert(window.plugins.___FILEBASENAME___.nativePluginResultHandler,window.plugins.___FILEBASENAME___.nativePluginErrorHandler,object);
+            function getDeviceInfo (object){
+                
+                window.plugins.___FILEBASENAME___.getDeviceInfo(nativePluginResultHandler,nativePluginErrorHandler,object);
                 
             }
+            
+            function buttonOne (object){
+                //prototyped result and error handlers in ___FILEBASENAME___.js
+                window.plugins.___FILEBASENAME___.callNativeFunction(window.plugins.___FILEBASENAME___.nativePluginResultHandler,window.plugins.___FILEBASENAME___.nativePluginErrorHandler,object);
+                
+            }
+            
             function nativePluginResultHandler (object) {
                 
-                console.log("nativePluginResultHandler = "+object);
+                console.log("nativePluginResultHandler = "+object[0]);
+                console.log("nativePluginResultHandler = "+object[1]);
+                console.log("nativePluginResultHandler = "+object[2]);
+                console.log("nativePluginResultHandler = "+object[3]);
+                console.log("nativePluginResultHandler = "+object[4]);
+                console.log("nativePluginResultHandler = "+object[5]);
+                console.log("nativePluginResultHandler = "+object[6]);
+                console.log("nativePluginResultHandler = "+object[7]);
             }
             
             function nativePluginErrorHandler (object) {
@@ -74,12 +81,11 @@
         <p id="deviceProperties">Loading device properties...</p><button onclick=
             "init('first object in array');">init!</button><br>
         
-        <div class="button" id="init"></div><button onclick=
+        <div class="button" id="getDEviceInfo"></div><button onclick=
             "getDeviceInfo('first object in array');">getDeviceInfo!</button><br>
         
         <div class="button" id="getDeviceInfo"></div><button onclick=
-            "buttonOne('literalString');">nativeFunctionWithAlert! (prototyped
-            return)</button><br>
+            "buttonOne('literalString');">buttonOne nativeFunction!</button><br>
         
     </body>
 </html>

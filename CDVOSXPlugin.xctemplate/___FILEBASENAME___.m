@@ -43,6 +43,14 @@
 - (void)init:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"init called from %@!", [self class]);
+    
+    for (int i = 0; i < [command.arguments count]; i++) {
+		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
+	}
+    
+    NSLog(@"command.callBackId = %@", command.callbackId);
+	NSLog(@"[command class] =  %@", [command class]);
+	NSLog(@"[command methodName] = %@", [command methodName]);
 
 	if (self.hasPendingOperation) {
 		NSLog(@"%@.hasPendingOperation = YES", [self class]);
@@ -50,43 +58,19 @@
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
 
-	for (int i = 0; i < [command.arguments count]; i++) {
-		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
-	}
-
 	NSHost *host = [NSHost currentHost];
-	NSLog(@"hostName %@", [host localizedName]);
-	// NSString	*callbackId		= [arguments pop];
-	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
-	NSLog(@"command description %@", objectAtIndex0);
+	NSLog(@"[host localizedName] =  %@", [host localizedName]);
 
 	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	CDVPluginResult		*result;
 
 	NSString *jsString = k___FILEBASENAME___INIT;
 	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___INIT was evaluated by webview!"];
-}
+	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success!"];
+    //    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 
-- (void)nativeFunctionWithAlert:(CDVInvokedUrlCommand *)command
-{
-	NSLog(@"nativeFunctionWithAlert called from %@!", [self class]);
 
-	if (self.hasPendingOperation) {
-		NSLog(@"%@.hasPendingOperation = YES", [self class]);
-	} else {
-		NSLog(@"%@.hasPendingOperation = NO", [self class]);
-	}
-
-	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
-
-	CDVViewController	*mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	CDVPluginResult		*result;
-
-	NSString *jsString = k___FILEBASENAME___ALERT;
-	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-	result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Success! const k___FILEBASENAME___ALERT was evaluated by webview and created alert!"];
-	[self.commandDelegate sendPluginResult:result callbackId:[command.arguments objectAtIndex:0]];
 }
 
 - (void)nativeFunction:(CDVInvokedUrlCommand *)command
@@ -98,8 +82,6 @@
 	} else {
 		NSLog(@"%@.hasPendingOperation = NO", [self class]);
 	}
-
-	NSString *objectAtIndex0 = [command.arguments objectAtIndex:0];
 
 	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
 	// CDVPluginResult		*result;
@@ -113,6 +95,7 @@
 - (void)getDeviceInfo:(CDVInvokedUrlCommand *)command
 {
 	NSLog(@"getDeviceInfo called from %@!", [self class]);
+	NSLog(@"command.callBackId = %@\n", command.callbackId);
 
 	for (int i = 0; i < [command.arguments count]; i++) {
 		NSLog(@"[command.arguments objectAtIndex:%i] = %@", i, [command.arguments objectAtIndex:i]);
@@ -126,15 +109,11 @@
 
 	// CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[deviceProperties objectForKey:@"model"]];
 
-	NSLog(@"command.callBackId = %@\n", command.callbackId);
-	// [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
 	CDVViewController *mvc___FILEBASENAME___ = (CDVViewController *)[super viewController];
-	// CDVPluginResult		*result;
 
 	NSString *jsString = k___FILEBASENAME___FUNCTION;
 	[mvc___FILEBASENAME___.webView stringByEvaluatingJavaScriptFromString:jsString];
-	CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"messageAsString"];
+	 CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[deviceProperties objectForKey:@"model"]];
 	[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
