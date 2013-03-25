@@ -30,7 +30,7 @@
 
 @interface ___FILEBASENAME___ : CDVPlugin {}
 
-- (void)init:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
+- (void)init:(CDVInvokedUrlCommand*)command;
 - (void)nativeFunctionWithAlert:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 - (void)nativeFunction:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options;
 

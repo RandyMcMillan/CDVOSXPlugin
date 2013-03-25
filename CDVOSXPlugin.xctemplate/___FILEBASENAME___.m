@@ -122,7 +122,17 @@
 {
     
    	NSLog(@"getDeviceInfo called from %@!", [self class]);
- 
+
+    
+    for (int i=0; i<[command.arguments count];i++) {
+        
+        
+        NSLog(@"[command.arguments objectAtIndex:%i] = %@",i,[command.arguments objectAtIndex:i]);
+        
+    }
+
+    
+    
     NSHost *host = [NSHost currentHost];
     NSLog(@"hostName %@",[host localizedName]);
     
